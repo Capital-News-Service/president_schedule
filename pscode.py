@@ -1,4 +1,3 @@
-import tweepy
 import json
 
 #opens and reads mvkey.json
