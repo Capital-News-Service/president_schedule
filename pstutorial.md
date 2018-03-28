@@ -1,4 +1,4 @@
-## President's Schedule
+## President Schedule
 
 **Problem:** It is difficult to know when the president is visiting Maryland or if he's meeting with a Maryland member or a Maryland company.
 **Solution:** Search the president’s public calendar for anything Maryland related.
