@@ -14,7 +14,7 @@ Sends out a tweet when the program runs to a Twitter account.
 * Write the following code in pskey.json:
   - consumer key, consumer key secret, access token, & access token secret
 * Write the following code in pscode.py:
-  - Import Tweepy
+  - Import Json & Tweepy
   - Call in authentication information from pskey.json
   - Store them so they can be passed into Twitter
   - Create keyword to tweet out
