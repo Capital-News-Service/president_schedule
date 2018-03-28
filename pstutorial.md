@@ -8,7 +8,7 @@ Sends out a tweet when the program runs to a Twitter account.
 * Create a gmail account for bot
   - presidentschedulemd@gmail.com
 * Create a Twitter account using gmail account
-  - @president_schedule
+  - @president_s_md
 * Get keys for Twitter account at apps.twitter.com
 * Create GitHub repo with 4 files: pstutorial.md, pskey.json, readme.md, GitIgnore, & pscode.py
 * Write the following code in pskey.json:
