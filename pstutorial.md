@@ -61,7 +61,14 @@ Print out in console the President's entire schedule in office as json
   - Click President's Public Calendar
   - Download json at https://factba.se/rss/calendar-full.json
 * In pscode.py import json
-* Print json in console as string
+* Print json in console as list
+```
+url_schedule = 'https://factba.se/rss/calendar-full.json'
+get_schedule = requests.get(url_schedule)
+json_schedule = get_schedule.json()
+print(json_schedule)
+```
+
 
 #### Version 3
 * Turn string into dataframe
