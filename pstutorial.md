@@ -61,17 +61,24 @@ Print out in console the President's entire schedule in office as json
   - Click President's Public Calendar
   - Download json at https://factba.se/rss/calendar-full.json
 * In pscode.py import json
-* Print json in console as list
+* Print json in console as list of dictionaries
+* Turn list of dictionaries into dataframe
 ```
+import requests
+import pandas as pd
+
+#import president's schedule as json
 url_schedule = 'https://factba.se/rss/calendar-full.json'
 get_schedule = requests.get(url_schedule)
 json_schedule = get_schedule.json()
 print(json_schedule)
+
+scedule_df = pd.DataFrame(json_schedule)
+
 ```
 
 
 #### Version 3
-* Turn string into dataframe
 * Search for "MD" in either details, location, or url by iterating over rows
 * If found, print out event in console
 
