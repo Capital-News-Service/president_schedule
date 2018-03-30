@@ -77,19 +77,38 @@ scedule_df = pd.DataFrame(json_schedule)
 
 ```
 
-
 #### Version 3
-* Search for "MD" in either details, location, or url by iterating over rows
+* In all events, search for list of words below in either details, location, or url by iterating over rows
 * If found, print out event in console
 
 * Hardcode words
+  - MD
   - Gaylord
   - James J. Rowley Training
   - Camp David
   - Walter Reed
   - Hagerstown
+  - Joint Base Andrews
   
-  - Aberdeen Proving Ground
+  - Aberdeen
+  - Bethesda
   - Fort Meade
-  - NSA (be more specific)
+  - Fort Detrick
+  - Naval Academy
+  - Naval Air Station
+  - Defense Information Systems Agency
+  - College Park
+  - NSA
+  - Goddard
   - https://en.wikipedia.org/wiki/List_of_federal_installations_in_Maryland
+  
+#### Version 4
+* Get today's date
+* Search for date in data frame
+* For that day, search for list of words below in either details, location, or url by iterating over rows
+* If found, print out event in console
+
+#### Version 5
+* For current day, if there is one event with a keyword, print date
+* Eliminate repeat dates so eac date is only printed once
+* Format tweet the president is visitng on date

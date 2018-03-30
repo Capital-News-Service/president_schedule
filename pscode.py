@@ -2,6 +2,7 @@ import json
 import tweepy
 import requests
 import pandas as pd
+import numpy as np
 
 #opens and reads mvkey.json
 pskey={}
@@ -30,10 +31,23 @@ def sendTweet(content):
     except tweepy.error.TweepError:
         pass
 
-#import president's schedule as json
-url_schedule = 'https://factba.se/rss/calendar-full.json'
-import_schedule = requests.get(url_schedule)
-json_schedule = import_schedule.json()
-print(json_schedule)
+#import president's schedule as json to dataframe
+urlschedule = 'https://factba.se/rss/calendar-full.json'
+importschedule = requests.get(urlschedule)
+jsonschedule = importschedule.json()
+schedule_df = pd.DataFrame(jsonschedule)
 
-scedule_df = pd.DataFrame(json_schedule)
+
+schedule_df
+
+
+
+schedule_df = schedule_df.replace(np.nan, '', regex=True)    
+md = schedule_df[schedule_df['details'].str.contains("MD")]
+    
+if (len(md) > 0):
+    irow = md.iterrows()
+    for i in irow:
+        print(i[1]['details'])
+        print(i[1]['date'])
+
