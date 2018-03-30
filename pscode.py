@@ -37,19 +37,16 @@ importschedule = requests.get(urlschedule)
 jsonschedule = importschedule.json()
 scheduledf = pd.DataFrame(jsonschedule)
 
-mdgov = ["MD", "Gaylord", "James J. Rowley", "Camp David", "Walter Reed", "Hagerstown", "Joint Base Andrews"]
+mdgov = ["MD", "Gaylord", "James J. Rowley", "Camp David", "Walter Reed", "Hagerstown", "Joint Base Andrews", "Aberdeen", "Fort Meade", "Fort Detrick", "Naval Academey"]
     
-
-scheduledf = scheduledf.replace(np.nan, '', regex=True)
-
 for m in mdgov:
+    scheduledf = scheduledf.replace(np.nan, '', regex=True)
     mdsearch = scheduledf[scheduledf['details'].str.contains(m) | scheduledf['location'].str.contains(m)]
     if (len(mdsearch) > 0):
         irow = mdsearch.iterrows()
         for i in irow:
-            print(i[1]['details'])
-            print(i[1]['location'])
+            print(i[1]['date'])
 
 
-    
+ https://stackoverflow.com/questions/17071871/select-rows-from-a-dataframe-based-on-values-in-a-column-in-pandas   
     

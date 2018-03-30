@@ -99,10 +99,8 @@ import numpy as np
 
 mdgov = ["MD", "Gaylord", "James J. Rowley", "Camp David", "Walter Reed", "Hagerstown", "Joint Base Andrews", "Aberdeen", "Fort Meade", "Fort Detrick", "Naval Academey"]
     
-
-scheduledf = scheduledf.replace(np.nan, '', regex=True)
-
 for m in mdgov:
+	scheduledf = scheduledf.replace(np.nan, '', regex=True)
     mdsearch = scheduledf[scheduledf['details'].str.contains(m) | scheduledf['location'].str.contains(m)]
     if (len(mdsearch) > 0):
         irow = mdsearch.iterrows()
