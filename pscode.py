@@ -35,19 +35,21 @@ def sendTweet(content):
 urlschedule = 'https://factba.se/rss/calendar-full.json'
 importschedule = requests.get(urlschedule)
 jsonschedule = importschedule.json()
-schedule_df = pd.DataFrame(jsonschedule)
+scheduledf = pd.DataFrame(jsonschedule)
 
-
-schedule_df
-
-
-
-schedule_df = schedule_df.replace(np.nan, '', regex=True)    
-md = schedule_df[schedule_df['details'].str.contains("MD")]
+mdgov = ["MD", "Gaylord", "James J. Rowley", "Camp David", "Walter Reed", "Hagerstown", "Joint Base Andrews"]
     
-if (len(md) > 0):
-    irow = md.iterrows()
-    for i in irow:
-        print(i[1]['details'])
-        print(i[1]['date'])
 
+scheduledf = scheduledf.replace(np.nan, '', regex=True)
+
+for m in mdgov:
+    mdsearch = scheduledf[scheduledf['details'].str.contains(m) | scheduledf['location'].str.contains(m)]
+    if (len(mdsearch) > 0):
+        irow = mdsearch.iterrows()
+        for i in irow:
+            print(i[1]['details'])
+            print(i[1]['location'])
+
+
+    
+    

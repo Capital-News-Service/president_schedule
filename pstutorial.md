@@ -78,28 +78,38 @@ scedule_df = pd.DataFrame(json_schedule)
 ```
 
 #### Version 3
-* In all events, search for list of words below in either details or location by iterating over rows
+* Iterate over colums location and details to find list of words below
 * If found, print out event in console
 
-* Hardcode words
+* Visited
   - MD
   - Gaylord
-  - James J. Rowley Training
+  - James J. Rowley
   - Camp David
   - Walter Reed
   - Hagerstown
   - Joint Base Andrews
-  
+* Not yet visited
   - Aberdeen
-  - Bethesda
   - Fort Meade
   - Fort Detrick
   - Naval Academy
-  - Naval Air Station
-  - Defense Information Systems Agency
-  - College Park
-  - NSA
-  - Goddard
+```
+import numpy as np
+
+mdgov = ["MD", "Gaylord", "James J. Rowley", "Camp David", "Walter Reed", "Hagerstown", "Joint Base Andrews", "Aberdeen", "Fort Meade", "Fort Detrick", "Naval Academey"]
+    
+
+scheduledf = scheduledf.replace(np.nan, '', regex=True)
+
+for m in mdgov:
+    mdsearch = scheduledf[scheduledf['details'].str.contains(m) | scheduledf['location'].str.contains(m)]
+    if (len(mdsearch) > 0):
+        irow = mdsearch.iterrows()
+        for i in irow:
+            print(i[1]['details'])
+            print(i[1]['location'])
+```
   
 #### Version 4
 * Get today's date
