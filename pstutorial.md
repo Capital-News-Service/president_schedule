@@ -78,7 +78,7 @@ scedule_df = pd.DataFrame(json_schedule)
 ```
 
 #### Version 3
-* In all events, search for list of words below in either details, location, or url by iterating over rows
+* In all events, search for list of words below in either details or location by iterating over rows
 * If found, print out event in console
 
 * Hardcode words
@@ -100,7 +100,6 @@ scedule_df = pd.DataFrame(json_schedule)
   - College Park
   - NSA
   - Goddard
-  - https://en.wikipedia.org/wiki/List_of_federal_installations_in_Maryland
   
 #### Version 4
 * Get today's date
