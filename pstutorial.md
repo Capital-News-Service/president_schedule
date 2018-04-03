@@ -127,15 +127,14 @@ scheduledf = scheduledf.replace(np.nan, '', regex=True)
 psdate = scheduledf[scheduledf['date'].str.contains(date)]
 if (len(psdate) > 0):
     irow = psdate.iterrows()
-    for d in irow:
-        print(d[1]['date'])
-        mdgov = ["MD", "Gaylord", "James J. Rowley", "Camp David", "Walter Reed", "Hagerstown", "Joint Base Andrews", "Aberdeen", "Fort Meade", "Fort Detrick", "Naval Academey"]
-        for m in mdgov:
-            mdsearch = psdate[psdate['details'].str.contains(m) | psdate['location'].str.contains(m)]
-            if (len(mdsearch) > 0):
-                irow = mdsearch.iterrows()
-                for i in irow:
-                    print(i[1]['location'])
+
+mdgov = ["MD", "Gaylord", "James J. Rowley", "Camp David", "Walter Reed", "Hagerstown", "Joint Base Andrews", "Aberdeen", "Fort Meade", "Fort Detrick", "Naval Academey"]  
+for m in mdgov:
+    mdsearch = psdate[psdate['details'].str.contains(m) | psdate['location'].str.contains(m)]
+    if (len(mdsearch) > 0):
+        irow = mdsearch.iterrows()
+        for i in irow:
+            print("President in MD")
 ```
 
 #### Version 5
