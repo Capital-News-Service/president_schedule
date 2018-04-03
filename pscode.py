@@ -23,7 +23,7 @@ auth.set_access_token(access_token, access_token_secret)
 api = tweepy.API(auth)
 
 def buildTweet(argument1):
-    tweet = "president schedule"
+    tweet = "The president will be in Maryland today, " + argument1 + ". For more information, visit https://factba.se/topic/calendar."
     sendTweet(tweet)
 
 def sendTweet(content):
@@ -51,12 +51,10 @@ psdate = scheduledf[scheduledf['date'].str.contains(date)]
 if (len(psdate) > 0):
     irow = psdate.iterrows()
 
-#mdgov = ["MD", "Gaylord", "James J. Rowley", "Camp David", "Walter Reed", "Hagerstown", "Joint Base Andrews", "Aberdeen", "Fort Meade", "Fort Detrick", "Naval Academey"]
-mdgov = ["Oval"]    
+mdgov = ["MD", "Gaylord", "James J. Rowley", "Camp David", "Walter Reed", "Hagerstown", "Joint Base Andrews", "Aberdeen", "Fort Meade", "Fort Detrick", "Naval Academey"] 
 for m in mdgov:
     mdsearch = psdate[psdate['details'].str.contains(m) | psdate['location'].str.contains(m)]
     if (len(mdsearch) > 0):
         irow = mdsearch.iterrows()
-        for i in irow:
-            print("President in MD")
-                    
+        buildTweet(date)
+#        print("The president will be in Maryland on " + i[1]['date'] + ".")
