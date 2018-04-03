@@ -146,10 +146,7 @@ def buildTweet(argument1):
     tweet = "The president will be in Maryland today, " + argument1 + ". For more information, visit https://factba.se/topic/calendar."
     sendTweet(tweet)
     
-mdgov = ["MD", "Gaylord", "James J. Rowley", "Camp David", "Walter Reed", "Hagerstown", "Joint Base Andrews", "Aberdeen", "Fort Meade", "Fort Detrick", "Naval Academey"] 
-for m in mdgov:
-    mdsearch = psdate[psdate['details'].str.contains(m) | psdate['location'].str.contains(m)]
-    if (len(mdsearch) > 0):
+
         irow = mdsearch.iterrows()
         buildTweet(date)
 

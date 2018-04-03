@@ -57,4 +57,3 @@ for m in mdgov:
     if (len(mdsearch) > 0):
         irow = mdsearch.iterrows()
         buildTweet(date)
-#        print("The president will be in Maryland on " + i[1]['date'] + ".")
