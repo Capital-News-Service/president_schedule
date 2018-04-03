@@ -3,6 +3,7 @@ import tweepy
 import requests
 import pandas as pd
 import numpy as np
+import datetime
 
 #opens and reads mvkey.json
 pskey={}
@@ -37,16 +38,23 @@ importschedule = requests.get(urlschedule)
 jsonschedule = importschedule.json()
 scheduledf = pd.DataFrame(jsonschedule)
 
-mdgov = ["MD", "Gaylord", "James J. Rowley", "Camp David", "Walter Reed", "Hagerstown", "Joint Base Andrews", "Aberdeen", "Fort Meade", "Fort Detrick", "Naval Academey"]
-    
-for m in mdgov:
-    scheduledf = scheduledf.replace(np.nan, '', regex=True)
-    mdsearch = scheduledf[scheduledf['details'].str.contains(m) | scheduledf['location'].str.contains(m)]
-    if (len(mdsearch) > 0):
-        irow = mdsearch.iterrows()
-        for i in irow:
-            print(i[1]['date'])
+#import today's date
+def getDate():
+    now = datetime.datetime.now()
+    date = now.strftime('%Y-%m-%d')
+    return date
 
-
- https://stackoverflow.com/questions/17071871/select-rows-from-a-dataframe-based-on-values-in-a-column-in-pandas   
-    
+date = getDate()
+scheduledf = scheduledf.replace(np.nan, '', regex=True)
+psdate = scheduledf[scheduledf['date'].str.contains(date)]
+if (len(psdate) > 0):
+    irow = psdate.iterrows()
+    for d in irow:
+        print(d[1]['date'])
+        mdgov = ["MD", "Gaylord", "James J. Rowley", "Camp David", "Walter Reed", "Hagerstown", "Joint Base Andrews", "Aberdeen", "Fort Meade", "Fort Detrick", "Naval Academey"]
+        for m in mdgov:
+            mdsearch = psdate[psdate['details'].str.contains(m) | psdate['location'].str.contains(m)]
+            if (len(mdsearch) > 0):
+                irow = mdsearch.iterrows()
+                for i in irow:
+                    print(i[1]['location'])

@@ -74,7 +74,6 @@ json_schedule = get_schedule.json()
 print(json_schedule)
 
 scedule_df = pd.DataFrame(json_schedule)
-
 ```
 
 #### Version 3
@@ -105,15 +104,39 @@ for m in mdgov:
     if (len(mdsearch) > 0):
         irow = mdsearch.iterrows()
         for i in irow:
-            print(i[1]['details'])
             print(i[1]['location'])
 ```
   
 #### Version 4
 * Get today's date
 * Search for date in data frame
-* For that day, search for list of words below in either details, location, or url by iterating over rows
+* For that day, search for list of words below in either details or location by iterating over rows
 * If found, print out event in console
+```
+import datetime
+
+#import today's date
+def getDate():
+    now = datetime.datetime.now()
+    date = now.strftime('%Y-%m-%d')
+    return date
+
+#search for md locations only for today
+date = getDate()
+scheduledf = scheduledf.replace(np.nan, '', regex=True)
+psdate = scheduledf[scheduledf['date'].str.contains(date)]
+if (len(psdate) > 0):
+    irow = psdate.iterrows()
+    for d in irow:
+        print(d[1]['date'])
+        mdgov = ["MD", "Gaylord", "James J. Rowley", "Camp David", "Walter Reed", "Hagerstown", "Joint Base Andrews", "Aberdeen", "Fort Meade", "Fort Detrick", "Naval Academey"]
+        for m in mdgov:
+            mdsearch = psdate[psdate['details'].str.contains(m) | psdate['location'].str.contains(m)]
+            if (len(mdsearch) > 0):
+                irow = mdsearch.iterrows()
+                for i in irow:
+                    print(i[1]['location'])
+```
 
 #### Version 5
 * For current day, if there is one event with a keyword, print date
