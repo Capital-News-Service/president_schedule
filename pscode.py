@@ -56,4 +56,7 @@ for m in mdgov:
     mdsearch = psdate[psdate['details'].str.contains(m) | psdate['location'].str.contains(m)]
     if (len(mdsearch) > 0):
         irow = mdsearch.iterrows()
+        for i in irow:
+            print(i[1]['details'])
+            print(i[1]['location'])
         buildTweet(date)
