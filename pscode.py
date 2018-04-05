@@ -59,4 +59,4 @@ for m in mdgov:
         for i in irow:
             print(i[1]['details'])
             print(i[1]['location'])
-        buildTweet(date)
+            buildTweet(i[1]['date'])

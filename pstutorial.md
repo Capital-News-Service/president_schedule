@@ -134,7 +134,10 @@ for m in mdgov:
     if (len(mdsearch) > 0):
         irow = mdsearch.iterrows()
         for i in irow:
-            print("President in MD")
+            print(i[1]['details'])
+            print(i[1]['location'])
+            buildTweet(i[1]['date'])
+            
 ```
 
 #### Version 5
@@ -145,8 +148,17 @@ for m in mdgov:
 def buildTweet(argument1):
     tweet = "The president will be in Maryland today, " + argument1 + ". For more information, visit https://factba.se/topic/calendar."
     sendTweet(tweet)
-    
+```
 
-        irow = mdsearch.iterrows()
-        buildTweet(date)
+#### Version 6
+Running the program in AWS EC2
+* Create a file called lamda_function.py and write the following code:
+  - #put imports here
+  - def lambda_handler(event, context)
+  - #program code
+  - return 'Hello from Lambda'
+* Save file in the same folder as project
+* Create a AWS account and make an instance of EC2
+* Save the key as lambdadeployer.pem
+* Open the terminal and run the following lines:
 

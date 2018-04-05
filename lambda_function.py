@@ -67,5 +67,5 @@ def lambda_handler(event, context):
             for i in irow:
                 print(i[1]['details'])
                 print(i[1]['location'])
-            buildTweet(date)
+                buildTweet(i[1]['date'])
     return 'Hello from Lambda'
