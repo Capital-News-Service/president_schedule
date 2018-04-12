@@ -150,15 +150,3 @@ def buildTweet(argument1):
     sendTweet(tweet)
 ```
 
-#### Version 6
-Running the program in AWS EC2
-* Create a file called lamda_function.py and write the following code:
-  - #put imports here
-  - def lambda_handler(event, context)
-  - #program code
-  - return 'Hello from Lambda'
-* Save file in the same folder as project
-* Create a AWS account and make an instance of EC2
-* Save the key as lambdadeployer.pem
-* Open the terminal and run the following lines:
-

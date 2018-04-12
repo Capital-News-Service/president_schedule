@@ -2,3 +2,6 @@ pskeys
 pskeys/
 .DS_Store
 .spyproject
+.psdeployment_package.zip
+psdeployment_package.zip
+psdeployment_package.zip/
