@@ -5,7 +5,7 @@ import pandas as pd
 import numpy as np
 import datetime
 
-#opens and reads mvkey.json
+#opens and reads pskey.json
 pskey={}
 with open("pskeys/pskey.json") as file:
     pskey = json.loads(file.read())
