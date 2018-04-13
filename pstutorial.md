@@ -23,7 +23,7 @@ Sends out a tweet when the program runs to a Twitter account.
 import json
 import tweepy
 
-#opens and reads mvkey.json
+#opens and reads pskey.json
 pskey={}
 with open("pskeys/pskey.json") as file:
     pskey = json.loads(file.read())
