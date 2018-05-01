@@ -1,11 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Apr  3 11:42:33 2018
-
-@author: gmkanik
-"""
-
 import json
 import tweepy
 import requests
