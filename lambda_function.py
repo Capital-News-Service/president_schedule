@@ -27,10 +27,8 @@ def lambda_handler(event, context):
         sendTweet(tweet)
 
     def sendTweet(content):
-        try:
-            api.update_status(content)
-        except tweepy.error.TweepError:
-            pass
+        api.update_status(content)
+
 
     #import president's schedule as json to dataframe
     urlschedule = 'https://factba.se/rss/calendar-full.json'
